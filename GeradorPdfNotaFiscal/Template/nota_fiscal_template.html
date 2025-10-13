@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            margin: 0;
+            size: A4;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            color: #000;
+            line-height: 1.2;
+            background: white;
+        }
+
+        .container {
+            width: 210mm;
+            margin: 0 auto;
+            padding: 15px;
+            background: white;
+        }
+
+        /* Cabeçalho */
+        .header {
+            display: table;
+            width: 100%;
+            border: 2px solid #000;
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .header-row {
+            display: table-row;
+        }
+
+        .header-left,
+        .header-center,
+        .header-right {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 8px;
+        }
+
+        .header-left {
+            width: 80px;
+            border-right: 2px solid #000;
+        }
+
+            .header-left img {
+                width: 70px;
+                height: auto;
+                display: block;
+            }
+
+        .header-center {
+            text-align: center;
+            border-right: 2px solid #000;
+        }
+
+            .header-center h1 {
+                font-size: 14px;
+                font-weight: bold;
+                margin-bottom: 3px;
+            }
+
+            .header-center h2 {
+                font-size: 11px;
+                font-weight: bold;
+                margin-bottom: 2px;
+            }
+
+            .header-center h3 {
+                font-size: 11px;
+                font-weight: bold;
+            }
+
+        .header-right {
+            width: 80px;
+            text-align: center;
+        }
+
+            .header-right img {
+                width: 70px;
+                height: 70px;
+                display: block;
+                margin: 0 auto;
+            }
+
+        /* Grid de informações */
+        .info-grid {
+            display: table;
+            width: 100%;
+            border: 2px solid #000;
+            border-top: none;
+            border-collapse: collapse;
+        }
+
+        .info-row {
+            display: table-row;
+        }
+
+        .info-cell {
+            display: table-cell;
+            padding: 4px 6px;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            font-size: 9px;
+            vertical-align: top;
+            background-color: #e8e8e8;
+        }
+
+            .info-cell:last-child {
+                border-right: none;
+            }
+
+        .info-label {
+            font-weight: bold;
+            display: block;
+        }
+
+        .info-value {
+            display: block;
+            margin-top: 1px;
+        }
+
+        /* Seções */
+        .section {
+            border: 2px solid #000;
+            border-top: none;
+            padding: 6px 10px 8px 10px;
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 10px;
+            text-align: center;
+            background-color: #e8e8e8;
+            padding: 3px 0;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #000;
+        }
+
+        .field-line {
+            font-size: 9px;
+            line-height: 1.5;
+            margin-bottom: 1px;
+        }
+
+        .field-label {
+            font-weight: bold;
+        }
+
+        .field-inline {
+            display: inline-block;
+            margin-right: 25px;
+        }
+
+        /* Código de Serviço */
+        .servico-section {
+            border: 2px solid #000;
+            border-top: none;
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        .servico-title {
+            font-weight: bold;
+            font-size: 10px;
+            padding: 3px 0;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #000;
+            background-color: #e8e8e8;
+        }
+
+        .servico-code {
+            font-size: 10px;
+            padding: 4px 0;
+        }
+
+        .servico-note {
+            font-size: 8px;
+            font-style: italic;
+            color: #333;
+            padding-top: 3px;
+        }
+
+        /* Tabela de Discriminação */
+        .table-section {
+            border: 2px solid #000;
+            border-top: none;
+            padding: 6px 10px 8px 10px;
+        }
+
+        .table-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 10px;
+            padding: 3px 0;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #000;
+            background-color: #e8e8e8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+        }
+
+            table th {
+                background-color: #d0d0d0;
+                border: 1px solid #000;
+                padding: 4px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            table td {
+                border: 1px solid #000;
+                padding: 4px 6px;
+            }
+
+        .td-right {
+            text-align: right;
+        }
+
+        .td-center {
+            text-align: center;
+        }
+
+        /* Observações */
+        .observacoes {
+            border: 2px solid #000;
+            border-top: none;
+            padding: 6px 10px 8px 10px;
+        }
+
+        .obs-title {
+            font-weight: bold;
+            font-size: 10px;
+            padding: 3px 0;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #000;
+            background-color: #e8e8e8;
+        }
+
+        .obs-content {
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        /* Tributos Federais */
+        .tributos {
+            border: 2px solid #000;
+            border-top: none;
+            padding: 6px 10px 8px 10px;
+        }
+
+        .tributos-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 10px;
+            padding: 3px 0;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #000;
+            background-color: #e8e8e8;
+        }
+
+        .tributos-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .tributos-table td {
+                border: 1px solid #000;
+                padding: 4px;
+                text-align: center;
+                font-size: 9px;
+            }
+
+            .tributos-table .tributo-header {
+                font-weight: bold;
+                background-color: #d0d0d0;
+            }
+
+        /* Detalhamento de Valores */
+        .valores {
+            border: 2px solid #000;
+            border-top: none;
+            padding: 6px 10px 8px 10px;
+        }
+
+        .valores-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 10px;
+            padding: 3px 0;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #000;
+            background-color: #e8e8e8;
+        }
+
+        .valores-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 6px;
+        }
+
+            .valores-table td {
+                border: 1px solid #000;
+                padding: 4px;
+                text-align: center;
+                font-size: 9px;
+            }
+
+            .valores-table .valor-header {
+                font-weight: bold;
+                background-color: #d0d0d0;
+            }
+
+        .retencoes-line {
+            font-size: 9px;
+            margin-bottom: 6px;
+        }
+
+        .retencoes-label {
+            font-weight: bold;
+        }
+
+        .liquido-line {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            padding-top: 6px;
+            border-top: 2px solid #000;
+            margin-top: 4px;
+        }
+
+        .liquido-label {
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .liquido-valor {
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* Rodapé */
+        .footer {
+            border: 2px solid #000;
+            border-top: none;
+            padding: 8px 10px 10px 10px;
+            font-size: 8px;
+            line-height: 1.7;
+        }
+
+        .footer-text {
+            margin-bottom: 2px;
+        }
+
+        .assinatura {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+        }
+
+        .page-info {
+            text-align: right;
+            font-size: 8px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <div class="header-row">
+                <div class="header-left">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Ccircle cx='50' cy='60' r='40' fill='%23006400' stroke='%23FFD700' stroke-width='2'/%3E%3Ctext x='50' y='65' text-anchor='middle' font-size='12' fill='%23FFD700' font-weight='bold'%3ELOUVEIRA%3C/text%3E%3C/svg%3E" alt="Brasão">
+                </div>
+                <div class="header-center">
+                    <h1>PREFEITURA MUNICIPAL DE LOUVEIRA</h1>
+                    <h2>SECRETARIA MUNICIPAL DE FINANÇAS E ECONOMIA</h2>
+                    <h3>Nota Fiscal Eletrônica de Serviços</h3>
+                </div>
+                <div class="header-right">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='white'/%3E%3Cg fill='black'%3E%3Crect x='5' y='5' width='25' height='25'/%3E%3Crect x='70' y='5' width='25' height='25'/%3E%3Crect x='5' y='70' width='25' height='25'/%3E%3Crect x='40' y='40' width='8' height='8'/%3E%3Crect x='60' y='40' width='8' height='8'/%3E%3Crect x='40' y='60' width='8' height='8'/%3E%3Crect x='70' y='70' width='8' height='8'/%3E%3C/g%3E%3C/svg%3E" alt="QR Code">
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Informações -->
+        <div class="info-grid">
+            <div class="info-row">
+                <div class="info-cell" style="width: 20%;">
+                    <span class="info-label">Número / Série</span>
+                    <span class="info-value">{{Numero}} / {{Serie}}</span>
+                </div>
+                <div class="info-cell" style="width: 20%;">
+                    <span class="info-label">Emissão</span>
+                    <span class="info-value">{{DataEmissao}}</span>
+                </div>
+                <div class="info-cell" style="width: 20%;">
+                    <span class="info-label">Incidência</span>
+                    <span class="info-value">{{Incidencia}}</span>
+                </div>
+                <div class="info-cell" style="width: 20%;">
+                    <span class="info-label">ISS a reter</span>
+                    <span class="info-value">{{IssReter}}</span>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-cell" style="width: 20%;">
+                    <span class="info-label">Prest. do Serviço</span>
+                    <span class="info-value">{{DataPrestacao}}</span>
+                </div>
+                <div class="info-cell" style="width: 35%;">
+                    <span class="info-label">Código de verificação</span>
+                    <span class="info-value">{{CodigoVerificacao}}</span>
+                </div>
+                <div class="info-cell" style="width: 20%;">
+                    <span class="info-label">Exigibilidade</span>
+                    <span class="info-value">{{Exigibilidade}}</span>
+                </div>
+                <div class="info-cell" style="width: 25%;">
+                    <span class="info-label">RPS</span>
+                    <span class="info-value">{{RPS}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prestador de Serviços -->
+        <div class="section">
+            <div class="section-title">Prestador de Serviços</div>
+            <div class="field-line">
+                <span class="field-label">Nome/Razão Social:</span> {{PrestadorRazao}}
+            </div>
+            <div class="field-line">
+                <span class="field-inline">
+                    <span class="field-label">CPF / CNPJ:</span> {{PrestadorCNPJ}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">Reg.:</span> {{PrestadorReg}}
+                </span>
+            </div>
+            <div class="field-line">
+                <span class="field-label">Endereço:</span> {{PrestadorEndereco}}
+            </div>
+            <div class="field-line">
+                <span class="field-inline">
+                    <span class="field-label">Telefone:</span> {{PrestadorTelefone}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">Município:</span> {{PrestadorMunicipio}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">País:</span> {{PrestadorPais}}
+                </span>
+            </div>
+            <div class="field-line">
+                <span class="field-inline">
+                    <span class="field-label">Insc. Mun.:</span> {{PrestadorInscMun}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">Cod. Mob.:</span> {{PrestadorCodMob}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">Insc. Est.:</span> {{PrestadorInscEst}}
+                </span>
+            </div>
+            <div class="field-line">
+                <span class="field-label">Email:</span> {{PrestadorEmail}}
+            </div>
+            <div class="field-line">
+                <span class="field-label">Nome Fant.:</span> {{PrestadorFantasia}}
+            </div>
+        </div>
+
+        <!-- Tomador de Serviços -->
+        <div class="section">
+            <div class="section-title">Tomador de Serviços</div>
+            <div class="field-line">
+                <span class="field-label">Nome/Razão Social:</span> {{TomadorRazao}}
+            </div>
+            <div class="field-line">
+                <span class="field-inline">
+                    <span class="field-label">CPF / CNPJ:</span> {{TomadorCNPJ}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">Reg.:</span> {{TomadorReg}}
+                </span>
+            </div>
+            <div class="field-line">
+                <span class="field-label">Endereço:</span> {{TomadorEndereco}}
+            </div>
+            <div class="field-line">
+                <span class="field-inline">
+                    <span class="field-label">Telefone:</span> {{TomadorTelefone}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">Município:</span> {{TomadorMunicipio}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">País:</span> {{TomadorPais}}
+                </span>
+            </div>
+            <div class="field-line">
+                <span class="field-inline">
+                    <span class="field-label">Insc. Mun.:</span> {{TomadorInscMun}}
+                </span>
+                <span class="field-inline">
+                    <span class="field-label">Insc. Est.:</span> {{TomadorInscEst}}
+                </span>
+            </div>
+            <div class="field-line">
+                <span class="field-label">Email:</span> {{TomadorEmail}}
+            </div>
+        </div>
+
+        <!-- Código do Serviço/Atividade -->
+        <div class="servico-section">
+            <div class="servico-title">Código do Serviço/Atividade</div>
+            <div class="servico-code">
+                {{CodigoServico}} - {{DescricaoServico}} ( {{Aliquota}} %)
+            </div>
+            <div class="servico-note">
+                * ISS - Correspondente aos itens de serviço do código tributário municipal ou a LC 116/2003
+            </div>
+        </div>
+
+        <!-- Discriminação dos Serviços -->
+        <div class="table-section">
+            <div class="table-title">Discriminação dos Serviços</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Descrição</th>
+                        <th style="width: 20%;">Unitário</th>
+                        <th style="width: 10%;">Qtd.</th>
+                        <th style="width: 20%;">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{DescricaoItem}}</td>
+                        <td class="td-right">R$ {{ValorUnitario}}</td>
+                        <td class="td-center">{{Quantidade}}</td>
+                        <td class="td-right">R$ {{ValorTotal}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Observações -->
+        <div class="observacoes">
+            <div class="obs-title">Observações</div>
+            <div class="obs-content">{{Observacoes}}</div>
+        </div>
+
+        <!-- Tributos Federais -->
+        <div class="tributos">
+            <div class="tributos-title">Tributos Federais</div>
+            <table class="tributos-table">
+                <tr>
+                    <td class="tributo-header">PIS</td>
+                    <td class="tributo-header">INSS</td>
+                    <td class="tributo-header">CSLL</td>
+                    <td class="tributo-header">IRRF</td>
+                    <td class="tributo-header">COFINS</td>
+                </tr>
+                <tr>
+                    <td>{{PIS}}</td>
+                    <td>{{INSS}}</td>
+                    <td>{{CSLL}}</td>
+                    <td>{{IRRF}}</td>
+                    <td>{{COFINS}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Detalhamento de Valores -->
+        <div class="valores">
+            <div class="valores-title">Detalhamento de Valores</div>
+            <table class="valores-table">
+                <tr>
+                    <td class="valor-header">Valor Total da Nota(R$)</td>
+                    <td class="valor-header">ISS Retido(R$)</td>
+                    <td class="valor-header">Desconto Condicional(R$)</td>
+                    <td class="valor-header">Base de Cálculo(R$)</td>
+                    <td class="valor-header">Alíquota (%)</td>
+                </tr>
+                <tr>
+                    <td>{{ValorTotal}}</td>
+                    <td>{{ValorIss}}</td>
+                    <td>{{DescontoCondicional}}</td>
+                    <td>{{BaseCalculo}}</td>
+                    <td>{{Aliquota}} %</td>
+                </tr>
+            </table>
+            <div class="retencoes-line">
+                <span class="retencoes-label">Outras Retenções(R$)</span> {{OutrasRetencoes}}
+            </div>
+            <div class="liquido-line">
+                <span class="liquido-label">Valor Líquido:</span>
+                <span class="liquido-valor">R$ {{ValorLiquido}}</span>
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="footer">
+            <div class="footer-text">
+                <strong>ESTA NOTA FISCAL NÃO ACOBERTA O TRÂNSITO DE MERCADORIAS.</strong> Gerado por:{{PrestadorRazao}}
+            </div>
+            <div class="footer-text">
+                Recebi(emos) de {{PrestadorRazao}}, os serviços constantes da nota fiscal Nº {{Numero}}, série {{Serie}}, conforme verificável pelo endereço eletrônico:
+            </div>
+            <div class="footer-text">
+                https://www.nfe-cidades.com.br e informe o código de verificação desta nota.
+            </div>
+            <div class="assinatura">
+                <span>Data: ___/___/___</span>
+                <span>Assinatura: _________________________________________</span>
+            </div>
+            <div class="page-info">Página 1 de 1</div>
+        </div>
+    </div>
+
+</body>
+</html>
