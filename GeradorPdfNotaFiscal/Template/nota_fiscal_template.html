@@ -95,9 +95,14 @@
             margin: 0 auto 1mm;
         }
 
+        .qr-cell {
+            text-align: center;
+        }
+
         .qr-note {
             font-size: 7px;
             line-height: 1.2;
+            text-align: left;
         }
 
         .block {
@@ -178,23 +183,9 @@
                     <div class="header-subtitle">Documento Auxiliar da NFS-e</div>
                 </td>
                 <td>
-                    <table class="wide">
-                        <colgroup>
-                            <col style="width: 30mm;" />
-                            <col style="width: 55mm;" />
-                        </colgroup>
-                        <tr>
-                            <td>
-                                <img class="brasao" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='34' fill='white' stroke='%23000' stroke-width='2'/%3E%3Ctext x='40' y='46' text-anchor='middle' font-size='10' font-family='Arial' font-weight='bold'%3EBRASAO%3C/text%3E%3C/svg%3E" alt="Brasao" />
-                                <div class="muni-title">Prefeitura Municipal de {{PrestadorMunicipio}}</div>
-                                <div class="muni-sub">Secretaria Municipal de Fazenda</div>
-                            </td>
-                            <td>
-                                <img class="qr" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='white'/%3E%3Cg fill='black'%3E%3Crect x='5' y='5' width='25' height='25'/%3E%3Crect x='70' y='5' width='25' height='25'/%3E%3Crect x='5' y='70' width='25' height='25'/%3E%3Crect x='40' y='40' width='8' height='8'/%3E%3Crect x='60' y='40' width='8' height='8'/%3E%3Crect x='40' y='60' width='8' height='8'/%3E%3Crect x='70' y='70' width='8' height='8'/%3E%3C/g%3E%3C/svg%3E" alt="QR" />
-                                <div class="qr-note">A autenticidade desta NFS-e pode ser verificada pela leitura deste codigo QR ou pela consulta da chave de acesso no portal nacional da NFS-e.</div>
-                            </td>
-                        </tr>
-                    </table>
+                    <img class="brasao" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='34' fill='white' stroke='%23000' stroke-width='2'/%3E%3Ctext x='40' y='46' text-anchor='middle' font-size='10' font-family='Arial' font-weight='bold'%3EBRASAO%3C/text%3E%3C/svg%3E" alt="Brasao" />
+                    <div class="muni-title">Prefeitura Municipal de {{PrestadorMunicipio}}</div>
+                    <div class="muni-sub">Secretaria Municipal de Fazenda</div>
                 </td>
             </tr>
         </table>
@@ -203,16 +194,19 @@
             <table class="wide">
                 <colgroup>
                     <col style="width: 70mm;" />
-                    <col style="width: 55mm;" />
-                    <col style="width: 70mm;" />
+                    <col style="width: 50mm;" />
+                    <col style="width: 45mm;" />
+                    <col style="width: 37mm;" />
                 </colgroup>
                 <tr>
-                    <td class="cell">
+                    <td class="cell" colspan="3">
                         <span class="label">Chave de Acesso da NFS-e</span>
                         <span class="value">{{CodigoVerificacao}}</span>
                     </td>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
+                    <td class="cell qr-cell" rowspan="3">
+                        <img class="qr" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='white'/%3E%3Cg fill='black'%3E%3Crect x='5' y='5' width='25' height='25'/%3E%3Crect x='70' y='5' width='25' height='25'/%3E%3Crect x='5' y='70' width='25' height='25'/%3E%3Crect x='40' y='40' width='8' height='8'/%3E%3Crect x='60' y='40' width='8' height='8'/%3E%3Crect x='40' y='60' width='8' height='8'/%3E%3Crect x='70' y='70' width='8' height='8'/%3E%3C/g%3E%3C/svg%3E" alt="QR" />
+                        <div class="qr-note">A autenticidade desta NFS-e pode ser verificada pela leitura deste codigo QR ou pela consulta da chave de acesso no portal nacional da NFS-e.</div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="cell">
