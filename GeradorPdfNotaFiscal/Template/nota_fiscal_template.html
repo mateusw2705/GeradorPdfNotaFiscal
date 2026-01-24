@@ -90,18 +90,18 @@
   }
 
   .header-title {
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.1;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1;
     text-align: center;
   }
 
   .header-subtitle {
     font-size: 9.6px;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1;
     text-align: center;
-    margin-top: 0.2mm; /* mais compacto */
+    margin-top: 0.5; /* mais compacto */
   }
 
   .header-caption {
@@ -211,17 +211,24 @@
     page-break-inside: avoid;
   }
 
-  .section-title {
-    font-size: 10px;
-    text-transform: uppercase;
-    margin-bottom: 0.6mm; /* mais compacto */
-  }
-
+.section-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 0.6mm; /* mais compacto */
+  font-weight: 700; /* bold */
+}
+.section-title-intermediario {
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 0.6mm; /* mais compacto */
+  text-align: center;
+}
   .label {
     font-size: 9px;
     display: block;
      text-transform: none;
     line-height: 1.05; /* mais compacto */
+    font-weight: 700;
   }
 
   .value {
@@ -284,8 +291,8 @@
                     <div class="header-subtitle">Documento Auxiliar da NFS-e</div>
                 </td>
                 <td>
-                   <img class="brasao" src="{{BrasaoSrc}}" alt="Brasão" />
-                <div class="muni-title">Prefeitura Municipal de {{PrestadorMunicipio}}</div>
+                   <img class="brasao" src="{{BrasaoSrc}}" alt="" />
+                <div class="muni-title">Prefeitura Municipal de {{PrestadorMunicipioCabeçalho}}</div>
                     <div class="muni-sub" >Secretaria Municipal de Fazenda</div>
 
                 </td>
@@ -302,7 +309,7 @@
                 </colgroup>
                 <tr>
                     <td class="cell" colspan="3">
-                    <span class="label" style="font-size:10px; font-weight:normal !important; line-height:1.1; white-space:nowrap;">
+                    <span class="label">
                             Chave de Acesso da NFS-e
                         </span>
                         <span class="value">{{CodigoVerificacao}}</span>
@@ -398,11 +405,11 @@
                 <tr>
                     <td class="cell" colspan="2">
                         <span class="label">Simples Nacional na Data de Competência</span>
-                        <span class="value">-</span>
+                         <span class="value">{{PrestadorReg}}</span>
                     </td>
                     <td class="cell" colspan="2">
                         <span class="label">Regime de Apuração Tributária pelo SN</span>
-                        <span class="value">{{PrestadorReg}}</span>
+                        <span class="value">{{RegimeApuracaoTrib}}</span>
                     </td>
                 </tr>
             </table>
@@ -418,6 +425,10 @@
                     <col style="width: 50mm;" />
                 </colgroup>
                 <tr>
+                    <td class="cell">
+                        <span class="label"></span>
+                        <span class="value"></span>
+                    </td>
                     <td class="cell">
                         <span class="label">CNPJ / CPF / NIF</span>
                         <span class="value">{{TomadorCNPJ}}</span>
@@ -452,14 +463,14 @@
                     </td>
                     <td class="cell">
                         <span class="label">CEP</span>
-                        <span class="value">-</span>
+                        <span class="value">{{TomadorCep}}</span>
                     </td>
                 </tr>
             </table>
         </div>
 
         <div class="section">
-            <div class="section-title">Intermediário do Serviço Não Identificado na NFS-e</div>
+            <div class="section-title-intermediario">Intermediário do Serviço Não Identificado na NFS-e</div>
         </div>
 
         <div class="section">
@@ -478,11 +489,11 @@
                     </td>
                     <td class="cell">
                         <span class="label">Código de Tributação Municipal</span>
-                        <span class="value">{{CodigoServico}}</span>
+                        <span class="value">{{CodServicoMun}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Local da Prestação</span>
-                        <span class="value">{{Incidencia}}</span>
+                        <span class="value">{{LocalPrestacao}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">País da Prestação</span>
@@ -510,7 +521,7 @@
                 <tr>
                     <td class="cell">
                         <span class="label">Tributação do ISSQN</span>
-                        <span class="value">{{Exigibilidade}}</span>
+                        <span class="value">{{TribISSQN}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">País Resultado da Prestação do Serviço</span>
@@ -518,53 +529,53 @@
                     </td>
                     <td class="cell">
                         <span class="label">Município de Incidência do ISSQN</span>
-                        <span class="value">{{Incidencia}}</span>
+                        <span class="value">{{EnderecoIncidencia}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Regime Especial de Tributação</span>
-                        <span class="value">{{PrestadorReg}}</span>
+                        <span class="value">{{RegimeEspecialTrib}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="cell">
                         <span class="label">Tipo de Imunidade</span>
-                        <span class="value">-</span>
+                        <span class="value">{{TipoImunidade}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Suspensão da Exigibilidade do ISSQN</span>
-                        <span class="value">{{Exigibilidade}}</span>
+                        <span class="value">{{SuspensaoExigibilidade}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Número Processo Suspensão</span>
-                        <span class="value">{{RPS}}</span>
+                        <span class="value">{{NumeroProcessoSuspensao}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Benefício Municipal</span>
-                        <span class="value">-</span>
+                        <span class="value">{{BeneficioMunicipal}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="cell">
                         <span class="label">Valor do Serviço</span>
-                        <span class="value">R$ {{ValorTotal}}</span>
+                        <span class="value">{{ValorTotal}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Desconto Incondicionado</span>
-                        <span class="value">R$ {{OutrasRetencoes}}</span>
+                        <span class="value">{{OutrasRetencoes}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Total Deduções/Reduções</span>
-                        <span class="value">R$ {{DescontoCondicional}}</span>
+                        <span class="value">{{DescontoCondicional}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Cálculo do BM</span>
-                        <span class="value">R$ {{BaseCalculo}}</span>
+                        <span class="value">{{ValorBeneficioMunicipal}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="cell">
                         <span class="label">BC ISSQN</span>
-                        <span class="value">R$ {{BaseCalculo}}</span>
+                        <span class="value">{{BaseCalculo}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Alíquota Aplicada</span>
@@ -576,7 +587,7 @@
                     </td>
                     <td class="cell">
                         <span class="label">ISSQN Apurado</span>
-                        <span class="value">R$ {{ValorIss}}</span>
+                        <span class="value">{{ValorIss}}</span>
                     </td>
                 </tr>
             </table>
@@ -597,16 +608,16 @@
                         <span class="value">{{IRRF}}</span>
                     </td>
                     <td class="cell">
-                        <span class="label">CP</span>
+                        <span class="label">CP Retido</span>
                         <span class="value">{{INSS}}</span>
                     </td>
                     <td class="cell">
-                        <span class="label">CSLL</span>
+                        <span class="label">PIS/COFINS/CSLL Retidos</span>
                         <span class="value">{{CSLL}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Total Tributação Federal</span>
-                        <span class="value">-</span>
+                        <span class="value">{{TotalTributacaoFederal}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -620,7 +631,7 @@
                     </td>
                     <td class="cell">
                         <span class="label">Retenção do PIS/COFINS</span>
-                        <span class="value">-</span>
+                        <span class="value">{{RetencaoPisCofins}}</span>
                     </td>
                     <td class="cell"></td>
                 </tr>
@@ -639,34 +650,34 @@
                 <tr>
                     <td class="cell">
                         <span class="label">Valor do Serviço</span>
-                        <span class="value">R$ {{ValorTotal}}</span>
+                        <span class="value">{{ValorTotal}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Desconto Condicionado</span>
-                        <span class="value">R$ {{DescontoCondicional}}</span>
+                        <span class="value">{{DescontoCondicional}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Desconto Incondicionado</span>
-                        <span class="value">R$ {{OutrasRetencoes}}</span>
+                        <span class="value">{{OutrasRetencoes}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">ISSQN Retido</span>
-                        <span class="value">{{IssReter}}</span>
+                        <span class="value">{{ValorIss}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="cell">
-                        <span class="label">IRRF, CP, CSLL - Retidos</span>
+                        <span class="label">IRRF,CP,PIS,COFINS,CSLL</span>
                         <span class="value">{{IRRF}}</span>
                     </td>
                     <td class="cell">
-                        <span class="label">PIS/COFINS Retidos</span>
+                        <span class="label">PIS/COFINS Devidos</span>
                         <span class="value">{{PIS}}</span>
                     </td>
                     <td class="cell"></td>
                     <td class="cell">
                         <span class="label">Valor Líquido da NFS-e</span>
-                        <span class="value">R$ {{ValorLiquido}}</span>
+                        <span class="value">{{ValorLiquido}}</span>
                     </td>
                 </tr>
             </table>
@@ -683,15 +694,15 @@
                 <tr>
                     <td class="cell">
                         <span class="label">Federais</span>
-                        <span class="value">{{PIS}}</span>
+                        <span class="value">{{ValoresFederais}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Estaduais</span>
-                        <span class="value">{{COFINS}}</span>
+                        <span class="value">{{ValoresEstaduais}}</span>
                     </td>
                     <td class="cell">
                         <span class="label">Municipais</span>
-                        <span class="value">{{ValorIss}}</span>
+                       <span class="value">{{ValoresMunicipais}}</span>
                     </td>
                 </tr>
             </table>
@@ -701,8 +712,6 @@
             <div class="section-title">Informações Complementares</div>
             <div class="info-block">
                 <div class="info-text">{{Observacoes}}</div>
-                <div class="info-text">Item: {{DescricaoItem}}</div>
-                <div class="info-text">Valor Unitário: R$ {{ValorUnitario}} | Quantidade: {{Quantidade}} | Regime Tomador: {{TomadorReg}}</div>
             </div>
         </div>
     </div>
